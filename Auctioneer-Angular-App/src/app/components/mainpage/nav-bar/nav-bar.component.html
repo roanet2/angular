@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+
+  <a class="navbar-brand" routerLink="">Assignment 3.1 ✔️</a>
+
+  <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle-Navivation" class="navbar-toggler"
+          data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home🏠<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           id="navbarDropdowns" role="button">
+          Offers📝
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/offers/overView1" routerLinkActive="active">📝 OverView1</a>
+          <a class="dropdown-item" routerLink="/offers/overView2" routerLinkActive="active">🎉 OverView2</a>
+          <a class="dropdown-item" routerLink="/offers/overView3" routerLinkActive="active">🔄 OverView3</a>
+          <a class="dropdown-item" routerLink="/offers/overView4" routerLinkActive="active">📍 OverView4</a>
+          <a class="dropdown-item" routerLink="/offers/overView41" routerLinkActive="active"><s>💂 OverView41</s></a>
+          <a class="dropdown-item" routerLink="/offers/overView42" routerLinkActive="active">🎛 OverView42</a>
+          <a class="dropdown-item" routerLink="/offers/overView5" routerLinkActive="active"><s>🚚 OverView5</s></a>
+          <a class="dropdown-item" routerLink="/offers/overView6" routerLinkActive="active"><s>🚚 OverView6</s></a>
+
+          <div class="dropdown-divider"></div>
+          <a [routerLink]="['/something-else']" class="dropdown-item">👀 Something</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           id="navbarDropdown" role="button">
+          Bids
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/bids">Bids</a>
+          <a class="dropdown-item" routerLink="/active-bids">Active Bids</a>
+          <a class="dropdown-item" routerLink="/potential-bids">Potential Bids</a>
+          <a class="dropdown-item" routerLink="/history">History</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/">Something else here</a>
+        </div>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/my-account">My Account <span class="sr-only">(current)</span></a>
+      </li>
+      <ng-template [ngIf]="!sessionService.isAuthenticated()" ]>
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/signin">Login <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/signon">Sign Up<span class="sr-only">(current)</span></a>
+      </li>
+      </ng-template>
+
+      <li class="nav-item active">
+        <a style="cursor: pointer" class="nav-link" (click)="onLogout()" routerLink="/signon"
+           *ngIf="sessionService.isAuthenticated()">Log out<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

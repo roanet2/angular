@@ -1,0 +1,44 @@
+<br>
+<hr>
+<h1>Assignment 3.2.1 ✔️</h1>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <table class="table table-striped">
+      <caption>List of all offers</caption>
+      <thead>
+      <tr>
+        <th >Title</th>
+        <th >Selling Date</th>
+        <th >Status</th>
+        <th >Number of Bids</th>
+        <th >Value highest bid</th>
+      </tr>
+      </thead>
+      <tbody class="table-striped">
+
+      <tr *ngFor="let offer of offers">
+        <td>{{offer.title}}</td>
+        <td>{{offer.sellDate.toLocaleDateString('nl-NL')}}</td>
+        <td>{{offer.auctionStatus}}</td>
+        <td>{{offer.numberOfBids}}</td>
+        <td>{{offer.valueHighestBid}}</td>
+      </tr>
+
+      </tbody>
+
+      <tfoot>
+      <tr>
+
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button (click)="addRandomOffer()" type="button" class="btn btn-primary btn-lg">Add Offer</button></td>
+
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

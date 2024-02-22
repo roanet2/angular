@@ -1,0 +1,54 @@
+
+<br>
+<hr>
+<h1>Assignment 3.6: Persistent Storage💪📍</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+
+      <p>Overview4Component</p>
+      <table class="table  table-hover ">
+        <thead>
+        <tr>
+          <th>Offer Title</th>
+        </tr>
+        </thead>
+
+        <tbody class="table-striped">
+
+        <!--        Proper injection of the list provided by offerService.-->
+        <tr *ngFor="let ngOffer of offerService.offers; let i = index;"
+            [class.bg-info]="i.toString() === getId()">
+          <td (click)="displayOffer(i)">{{ ngOffer.title }}</td>
+        </tr>
+
+        </tbody>
+
+        <tfoot>
+        <tr>
+          <td>
+            <button (click)="addAndDisplayRandomOffer()"
+                    class="btn btn-primary btn-lg" type="button">Add Offer
+            </button>
+            <button (click)=onSave()  class="btn btn-primary btn-lg" type="button">
+              SaveAlloffers
+            </button>
+            <button (click)=onGet()  class="btn btn-primary btn-lg" type="button">
+              getAlloffers
+            </button>
+
+
+
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <router-outlet (activate)="callActivate($event)" (deactivate)="callDeactivate($event)"></router-outlet>
+
+    <div class="col-1"></div>
+  </div>
+
+</div>

@@ -1,0 +1,142 @@
+<div class="container">
+
+  <p>FormControlComponent</p>
+
+
+  <p>Edit: {{ offerService.get(detailOfferIndex).title }} {{getStatus()}}</p>
+
+  <!--      Each input element must get its own name and ngModel attribute.
+            The naming is simple enough. But it's not clear how I need to specify the ngModel.
+            So i just pass the `NgModel` attribute to the input element.
+  -->
+  <hr>
+
+  <form #detailForm="ngForm" (keydown.end)="$event.preventDefault()" novalidate>
+
+    <fieldset>
+
+      <div class="form-group">
+        <label for="offerTitle">Title</label>
+        <input #detailOfferTitle="ngModel"
+               (keyup)="stateNoDelta = false"
+               [(ngModel)]="localDetailOffer.title"
+               [class.border-danger]="detailOfferTitle.dirty && detailOfferTitle.invalid"
+               [class.border-success]="detailOfferTitle.touched && detailOfferTitle.valid"
+               class="form-control"
+               id="offerTitle"
+               minlength="5"
+               name="offerTitle"
+               required
+               type="text"
+               value="{{ offerService.get(detailOfferIndex).title }}">
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label for="offerDescription">Description</label>
+        <input #detailOfferDescription="ngModel"
+               (keyup)="stateNoDelta = false"
+               [(ngModel)]="localDetailOffer.description"
+               [class.border-danger]="detailOfferDescription.dirty && detailOfferDescription.invalid"
+               [class.border-success]="detailOfferDescription.touched && detailOfferDescription.valid"
+               class="form-control"
+               id="offerDescription"
+               name="offerDescription"
+               required
+               type="text"
+               value="{{ offerService.get(detailOfferIndex).description }}">
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label for="offerStatus">Status</label>
+        <select #detailOfferStatus="ngModel"
+                (click)="stateNoDelta = false"
+                [(ngModel)]="localDetailOffer.auctionStatus"
+                [class.border-danger]="detailOfferStatus.dirty && detailOfferStatus.invalid"
+                [class.border-success]="detailOfferStatus.touched && detailOfferStatus.valid"
+                class="custom-select"
+                id="offerStatus"
+                name="offerStatus"
+                required>
+          <option *ngFor="let status of auctionKeys"
+                  [selected]="status === offerService.get(detailOfferIndex).auctionStatus.toString()"
+                  [value]="status">
+            {{ status }}
+          </option>
+        </select>
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label for="offerBids">Number of Bids</label>
+        <input #detailOfferNumberOfBids="ngModel"
+               (keyup)="stateNoDelta = false"
+               [class.border-danger]="detailOfferNumberOfBids.dirty && detailOfferNumberOfBids.invalid"
+               [class.border-success]="detailOfferNumberOfBids.touched && detailOfferNumberOfBids.valid"
+               [ngModel]="localDetailOffer.numberOfBids"
+               class="form-control"
+               id="offerBids"
+               name="numberBids"
+               required
+               type="number"
+               value="{{ offerService.get(detailOfferIndex).numberOfBids }}">
+      </div>
+
+      <hr>
+
+      <div class="form-group">
+        <label for="offerHighBid">Highest Bid</label>
+        <input #detailOfferValuesHighestBid="ngModel"
+               (keyup)="stateNoDelta = false"
+               [class.border-danger]="detailOfferValuesHighestBid.invalid && detailOfferValuesHighestBid.dirty"
+               [class.border-success]="detailOfferValuesHighestBid.touched && detailOfferValuesHighestBid.valid"
+               [ngModel]="localDetailOffer.valueHighestBid"
+               class="form-control"
+               id="offerHighBid"
+               name="highestBid"
+               required
+               type="number"
+               value="{{ offerService.get(detailOfferIndex).valueHighestBid }}">
+      </div>
+
+
+      <button (click)="saveButton(detailForm)"
+              [disabled]="detailForm.invalid"
+              class="btn btn-success m-1"
+              type="button">Save
+      </button>
+
+      <button (click)="deleteButton()"
+              [disabled]="!stateNoDelta"
+              class="btn btn-danger m-1"
+              type="button">Delete
+      </button>
+
+      <button (click)="clearButton(detailForm)"
+              class="btn btn-secondary m-1"
+              type="button">Clear
+      </button>
+
+      <button (click)="resetButton(detailForm)"
+              [disabled]="stateNoDelta"
+              class="btn btn-secondary m-1"
+              type="button">Reset
+      </button>
+
+      <button (click)="cancelButton()"
+              class="btn btn-dark m-1"
+              type="button">Cancel
+      </button>
+
+    </fieldset>
+
+    <p *ngIf="detailForm.invalid && detailForm.dirty" class="text-danger">Please fix the input errors.</p>
+
+  </form>
+
+
+</div>

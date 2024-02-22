@@ -1,0 +1,14 @@
+--
+-- INSERT INTO Person(id, name, Age)
+-- values (1, 'roan', 21);
+--
+-- INSERT  INTO Adress(ID, Adress, postcode) values (1,'wibauthuisstraat', '2013VS');
+-- INSERT into  Person_Adresses(User_id, adresses_ID) values (1,1);
+--
+-- INSERT INTO Offer(id, Sell_Date,  title, description, status, number_Of_Bids, value_Highest_Bid)
+-- values (1, 'test', 11-12-2019:20:10:00, 'test', 'NEW', 9, 88.88);
+--
+-- SELECT * From Offer
+--
+-- INSERT INTO Offer(id, Sell_Date, description, number_Of_Bids, status, title, value_Highest_Bid)
+-- values (1, 11-12-2019:20:10:10, 'test', 9, 'NEW','test', 88.88);

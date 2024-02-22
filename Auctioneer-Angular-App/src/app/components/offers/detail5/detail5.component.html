@@ -1,0 +1,109 @@
+<div class="">
+
+  <table class="table col">
+    <thead>
+
+    <tr>
+      <th>Edit: {{ offerService.get(detailOfferIndex).title }} {{getStatus()}}</th>
+
+    </tr>
+    </thead>
+    <tbody class="table-striped">
+
+    <tr>
+      <td>Title</td>
+      <td><label>
+        <input #detailOfferTitle
+               (keyup)="stateNoDelta = false"
+               class="form-control"
+               type="text"
+               value="{{ offerService.get(detailOfferIndex).title }}">
+      </label></td>
+
+    </tr>
+
+    <tr>
+      <td>Description</td>
+      <td><label>
+        <input #detailOfferDescription
+               (keyup)="stateNoDelta = false"
+               class="form-control"
+               type="text"
+               value="{{ offerService.get(detailOfferIndex).description }}">
+      </label></td>
+    </tr>
+    <tr>
+      <td>Status</td>
+
+      <td><label>
+        <select #detailOfferStatus
+                (click)="stateNoDelta = false"
+                class="custom-select">
+          <option *ngFor="let status of auctionKeys; let j = index;"
+                  [selected]="status === offerService.get(detailOfferIndex).auctionStatus.toString()"
+                  [value]="status">{{ status }}</option>
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Number of Bids</td>
+      <td><label>
+        <input #detailOfferNumberOfBids
+               (keyup)="stateNoDelta = false"
+               class="form-control"
+               type="number"
+               value="{{ offerService.get(detailOfferIndex).numberOfBids }}">
+      </label></td>
+    </tr>
+    <tr>
+      <td>Highest Bid</td>
+      <td><label>
+        <input #detailOfferValuesHighestBid
+               (keyup)="stateNoDelta = false"
+               class="form-control"
+               type="number"
+               value="{{ offerService.get(detailOfferIndex).valueHighestBid }}">
+      </label></td>
+    </tr>
+
+    </tbody>
+
+    <tfoot>
+    <tr>
+      <td></td>
+      <td class="justify-content-start">
+        <button (click)="saveButton()"
+                [disabled]="stateNoDelta"
+                class="btn btn-success m-1"
+                type="button">Save
+        </button>
+
+        <button (click)="deleteButton()"
+                [disabled]="!stateNoDelta"
+                class="btn btn-danger m-1"
+                type="button">Delete
+        </button>
+
+        <button (click)="clearButton()"
+                class="btn btn-secondary m-1"
+                type="button">Clear
+        </button>
+
+        <button (click)="resetButton()"
+                [disabled]="stateNoDelta"
+                class="btn btn-secondary m-1"
+                type="button">Reset
+        </button>
+
+        <button (click)="cancelButton()"
+                class="btn btn-dark m-1"
+                type="button">Cancel
+        </button>
+      </td>
+
+    </tr>
+    </tfoot>
+  </table>
+
+
+</div>

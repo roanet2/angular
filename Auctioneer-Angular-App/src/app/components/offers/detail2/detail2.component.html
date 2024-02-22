@@ -1,0 +1,74 @@
+<div class="col">
+
+  <table class="table col">
+    <thead>
+    <tr>
+      <th>Edit: {{detailOffer.title}}</th>
+
+    </tr>
+    </thead>
+    <tbody class="table-striped">
+
+    <tr>
+      <td>Title</td>
+      <td><label>
+        <input #detailOfferTitle class="form-control" type="text" value="{{[detailOffer.title]}}">
+      </label></td>
+
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><label>
+        <input #detailOfferDescription class="form-control" type="text" value="{{detailOffer.description}}">
+      </label></td>
+
+    </tr>
+    <tr>
+      <td>Status</td>
+
+      <!--      TODO figure out how to implement td.label.select.option.selected attribute to work:-->
+      <!--      [class.selected]="status === detailOffer.auctionStatus.toString() ? true : null"-->
+      <td><label>
+        <select #detailOfferStatus class="custom-select" value="{{detailOffer.auctionStatus}}">
+          <option *ngFor="let status of auctionKeys"
+                  [value]="status">{{status}}</option>
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Number of Bids</td>
+      <td><label>
+        <input #detailOfferNumberOfBids class="form-control" type="number" value="{{detailOffer.numberOfBids}}">
+      </label></td>
+    </tr>
+    <tr>
+      <td>Highest Bid</td>
+      <td><label>
+        <input #detailOfferValuesHighestBid class="form-control" type="number"
+               value="{{detailOffer.valueHighestBid}}">
+      </label></td>
+
+    </tr>
+
+    </tbody>
+
+    <tfoot>
+    <tr>
+      <td></td>
+      <td class="justify-content-start">
+        <button (click)="saveButton(detailOfferTitle.value,
+                                    detailOfferDescription.value,
+                                    detailOfferStatus.value,
+                                    detailOfferNumberOfBids.value,
+                                    detailOfferValuesHighestBid.value)"
+                class="btn btn-success m-1"
+                type="button">Save
+        </button>
+        <button (click)="deleteButton()" class="btn btn-danger m-1" type="button">Delete</button>
+      </td>
+
+    </tr>
+    </tfoot>
+  </table>
+
+</div>
